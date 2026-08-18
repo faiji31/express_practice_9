@@ -38,8 +38,15 @@ const updateuserIntoDB=async( id:string,payload:IUser)=>{
     return result
 }
 
+const deleteUserIntoDB= async(id:string)=>{
+    const result = await pool.query(`
+            DELETE FROM users WHERE id = $1 RETURNING *
+            `,[id]);
+            return result
+}
+
  export const UserService ={
     CreateUserIntoDB,getUserIntoDB
     , getSingleUserIntoDB,
-    updateuserIntoDB
+    updateuserIntoDB,deleteUserIntoDB
 }
