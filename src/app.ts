@@ -25,25 +25,8 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use('/api/users',UserRoute)
 
-app.get("/api/users", async (req: Request, res: Response) => {
-  try {
-    const result = await pool.query(
-      `SELECT * FROM users
-            `,
-    );
-    res.status(201).json({
-      success: true,
-      message: "user retrived successfully!",
-      data: result.rows,
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-      error: error,
-    });
-  }
-});
+app.get("/api/users",UserRoute);
+
 app.get("/api/users/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {

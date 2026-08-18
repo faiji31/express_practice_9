@@ -8,4 +8,6 @@ const router =Router()
 
 router.post("/", UserController.CreateUser);
 
+router.get("/",UserController.getUser)
+
 export const UserRoute=router
