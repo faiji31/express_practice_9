@@ -3,8 +3,7 @@ import express, {
   type Request,
   type Response,
 } from "express";
-import config from "./config";
-import { initDB, pool } from "./db";
+
 import { UserRoute } from "./modules/user/user.routes";
 const app: Application = express();
 
