@@ -1,12 +1,16 @@
 
 import { pool } from "../../db"
+import bcrypt from "bcryptjs";
 
 
 const createUserIntoDB=async(payload:any)=>{
     const {user_id,bio,phone,address,gender} = payload
+
+   
     const user = await pool.query(`
         SELECT * FROM users WHERE id=$1 
         `,[user_id])
+        
 
         if(user.rows.length===0){
             throw new Error("user not exists")
